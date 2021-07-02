@@ -1,0 +1,27 @@
+.grid {
+  @apply flex items-center justify-center flex-wrap max-w-3xl mt-12;
+}
+
+.card {
+  @apply m-4 p-6 text-left md:w-11/12 no-underline border border-gray-100 rounded-lg transition-all duration-150 ease-in-out;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  @apply text-blue-400 border-blue-400;
+}
+
+.card h3 {
+  @apply mb-4 text-2xl font-semibold;
+}
+
+.card p {
+  @apply m-0 text-2xl;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    @apply w-full flex-col;
+  }
+}
