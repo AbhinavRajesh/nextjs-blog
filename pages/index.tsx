@@ -3,6 +3,7 @@ import { Articles } from "../types";
 
 import Navbar from "../components/Navbar";
 import Article from "../components/Article";
+import { API_URL } from "../constants";
 
 export default function Home({
   articles,
@@ -27,7 +28,7 @@ export default function Home({
 
 export const getStaticProps = async () => {
   const articles: Articles[] = await (
-    await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+    await fetch(`${API_URL}/articles`)
   ).json();
 
   return {
