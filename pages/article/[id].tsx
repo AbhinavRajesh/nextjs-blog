@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import Head from "next/head";
 import Navbar from "../../components/Navbar";
 import { API_URL } from "../../constants";
 import { Articles } from "../../types";
@@ -9,6 +10,10 @@ const Article = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="max-w-5xl mx-auto">
+      <Head>
+        <title>{article.title}</title>
+        <meta name="description" content={`${article.body.slice(0, 140)}...`} />
+      </Head>
       <Navbar />
       <div className="flex flex-col items-start justify-center mt-40">
         <h1 className="font-bold text-4xl capitalize mb-4">{article.title}</h1>
