@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType } from "next";
+import { InferGetServerSidePropsType } from "next";
 import { Articles } from "../types";
 
 import Navbar from "../components/Navbar";
@@ -7,7 +7,7 @@ import { API_URL } from "../constants";
 
 export default function Home({
   articles,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="max-w-5xl mx-auto">
       <Navbar />
@@ -26,7 +26,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const articles: Articles[] = await (
     await fetch(`${API_URL}/articles`)
   ).json();

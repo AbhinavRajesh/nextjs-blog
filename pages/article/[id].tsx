@@ -1,4 +1,4 @@
-import { GetServerSideProps, InferGetStaticPropsType } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import Head from "next/head";
 
@@ -9,7 +9,7 @@ import Navbar from "../../components/Navbar";
 
 const Article = ({
   article,
-}: InferGetStaticPropsType<typeof getServerSideProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div className="max-w-5xl mx-auto">
       <Head>
