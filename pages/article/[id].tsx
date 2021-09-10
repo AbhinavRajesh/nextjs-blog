@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetServerSideProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Head from "next/head";
 
@@ -9,7 +9,7 @@ import Navbar from "../../components/Navbar";
 
 const Article = ({
   article,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetStaticPropsType<typeof getServerSideProps>) => {
   return (
     <div className="max-w-5xl mx-auto">
       <Head>
@@ -30,7 +30,7 @@ const Article = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(`${API_URL}/articles/${context.params!.id}`);
   const article: Articles = await res.json();
 
@@ -38,23 +38,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       article: article,
     },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`${API_URL}/articles`);
-  const articles: Articles[] = await res.json();
-
-  const ids = articles.map((article) => article.id);
-
-  const paths = ids.map((id) => ({
-    params: {
-      id: id.toString(),
-    },
-  }));
-  return {
-    paths: paths,
-    fallback: false,
   };
 };
 
