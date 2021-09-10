@@ -12,7 +12,7 @@ export default function Home({
     <div className="max-w-5xl mx-auto">
       <Navbar />
       <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
-        {articles.map((article) => (
+        {articles?.map((article) => (
           <Article
             body={article.body}
             id={article.id}
