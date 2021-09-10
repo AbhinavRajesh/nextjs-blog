@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import Navbar from "../../components/Navbar";
+
 import { API_URL } from "../../constants";
 import { Articles } from "../../types";
+
+import Navbar from "../../components/Navbar";
 
 const Article = ({
   article,
